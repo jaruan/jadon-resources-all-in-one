@@ -1,0 +1,85 @@
+version: "3"
+
+services:
+  jadon-db:
+    container_name: jadon-db
+    image: mysql:8.0
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      - ./db/data:/var/lib/mysql
+      - ./db/conf:/etc/mysql/conf.d
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    ports:
+      - "3306:3306"
+  jadon-queue:
+    container_name: jadon-queue
+    image: rabbitmq:3.12-management-alpine
+    hostname: localhost
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    environment:
+      RABBITMQ_DEFAULT_USER: admin
+      RABBITMQ_DEFAULT_PASS: password
+      RABBITMQ_DEFAULT_VHOST: /
+    volumes:
+      - ./queue/data:/var/lib/rabbitmq/
+  jadon-redis:
+    container_name: jadon-redis
+    image: redis:7.2
+    ports:
+      - "6379:6379"
+  jadon-elasticsearch-node-1:
+    image: elasticsearch:7.5.2
+    container_name: jadon-elasticsearch-node-1
+    environment:
+      - node.name=jadon-elasticsearch-node-1
+      - cluster.initial_master_nodes=jadon-elasticsearch-node-1,jadon-elasticsearch-node-2,jadon-elasticsearch-node-3
+      - discovery.seed_hosts=jadon-elasticsearch-node-2,jadon-elasticsearch-node-3
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/data/node1:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+  jadon-elasticsearch-node-2:
+    image: elasticsearch:7.5.2
+    container_name: jadon-elasticsearch-node-2
+    environment:
+      - node.name=jadon-elasticsearch-node-2
+      - cluster.initial_master_nodes=jadon-elasticsearch-node-1,jadon-elasticsearch-node-2,jadon-elasticsearch-node-3
+      - discovery.seed_hosts=jadon-elasticsearch-node-1,jadon-elasticsearch-node-3
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/data/node2:/usr/share/elasticsearch/data
+  jadon-elasticsearch-node-3:
+    image: elasticsearch:7.5.2
+    container_name: jadon-elasticsearch-node-3
+    environment:
+      - node.name=jadon-elasticsearch-node-3
+      - cluster.initial_master_nodes=jadon-elasticsearch-node-1,jadon-elasticsearch-node-2,jadon-elasticsearch-node-3
+      - discovery.seed_hosts=jadon-elasticsearch-node-1,jadon-elasticsearch-node-2
+      - cluster.name=es-cluster
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - ./elasticsearch/data/node3:/usr/share/elasticsearch/data
