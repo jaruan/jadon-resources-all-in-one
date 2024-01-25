@@ -83,3 +83,17 @@ services:
         hard: -1
     volumes:
       - ./elasticsearch/data/node3:/usr/share/elasticsearch/data
+  jadon-cerebro:
+    container_name: jadon-cerebro
+    image: lmenezes/cerebro
+    ports:
+      - "9100:9000"
+    command:
+      - -Dhosts.0.host=http://jadon-elasticsearch-node-1:9200
+  jadon-kibana:
+    container_name: jadon-kibana
+    image: kibana:7.5.2
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=["http://jadon-elasticsearch-node-1:9200","http://jadon-elasticsearch-node-2:9200","http://jadon-elasticsearch-node-3:9200"]
