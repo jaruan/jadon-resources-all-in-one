@@ -1,7 +1,7 @@
 db/data/*
 !db/data/.gitkeep
 
-elasticsearch/data/node*
+elasticsearch/data/node*/*
 !elasticsearch/data/node*/.gitkeep
 
 queue/data/*
