@@ -1,0 +1,3 @@
+db/data/**/*
+elasticsearch/data/node*/**/*
+queue/data/**/*
