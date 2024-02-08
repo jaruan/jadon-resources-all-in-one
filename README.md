@@ -41,6 +41,10 @@ If your development environment is a VM, please check your VM's memory or increa
 
 ## About the services
 
+### Data volume
+
+After building the **MySQL**, **Elasticsearch**, **RabbitMQ**, you will find out the data will be stored in the relative path. It means that the data volume has been mapping into the folder of this repository.
+
 ### Elasticsearch
 
 Please notice the elasticsearch [configuration](https://github.com/jaruan/jadon-resources-all-in-one/blob/main/docker-compose.yml#L35), it is a multi-node cluster mode.
