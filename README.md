@@ -1,10 +1,10 @@
 # jadon-resources-all-in-one
 
-I usually make some applications or servers that depends some services, which includes **MySQL**, **RabbitMQ**, **Redis**, **Elasticsearch**, **Cerebro**, **Kibana**, etc. This repository will be a super useful for developers to build them quickly via docker-compose.
+In my work experience, I often make a contact with these services, which includes **MySQL**, **RabbitMQ**, **Redis**, **Elasticsearch**, **Cerebro**, **Kibana**, etc. This repository will be a super friendly for developers to build them quickly via docker-compose.
 
 ## Quick Start
 
-For the first time building those services, we need to execute this command to grant a folder access permission to elasticsearch.
+For the first time building those services, we need to execute this command to grant a folder access to elasticsearch.
 `make grant-permission`
 
 ### Running
@@ -14,6 +14,23 @@ For the first time building those services, we need to execute this command to g
 ### Stopping
 
 `make docker-compose-stop`
+
+### Services
+
+| Service Name        | Port   |  User / Password  |
+| --------   | -----:  | :----:  |
+| MySQL      | 3306   |   root / password     |
+| Redis        |   6379 |     |
+| RabbitMQ        |    5672    | 💡 I strongly recommend that you can set a new user by admin   |
+| Elasticsearch        |    9200    |    |
+
+### Dashboard
+
+| Name | Host                    |
+| ------------- | ------------------------------ |
+| Cerebro      | <http://localhost:9100>       |
+| RabbitMQ Admin   | <http://localhost:15672>    |
+| Kibana   | <http://localhost:5601>   |
 
 💡**Note**
 If your development environment is a VM, please check your VM's memory or increase the maximum memory.
@@ -36,5 +53,3 @@ On the other hand, port 9200 is the default HTTP port for Elasticsearch. It is u
 ## Next step
 
 I will continue to upgrade the docker-compose.yml. Add more and more popular service configuration in it. Also, welcome developers giving me advices. I will really appreciate.
-
-

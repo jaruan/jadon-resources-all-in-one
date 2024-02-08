@@ -6,8 +6,8 @@ docker-compose-stop:
 	docker-compose -f docker-compose.yml down
 .PHONY: docker-compose-stop
 
-grant-permission:
+grant:
 	chown -R 1000:1000 elasticsearch/data/node1
 	chown -R 1000:1000 elasticsearch/data/node2
 	chown -R 1000:1000 elasticsearch/data/node3
-.PHONY: grant-permission
+.PHONY: grant
