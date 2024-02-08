@@ -4,6 +4,8 @@ In my work experience, I often make a contact with these services, which include
 
 ## Quick Start
 
+💡 Please install these tools `make`, `docker` and  `docker-compose` before going the following steps.
+
 For the first time building those services, we need to execute this command to grant a folder access to elasticsearch.
 `make grant-permission`
 
