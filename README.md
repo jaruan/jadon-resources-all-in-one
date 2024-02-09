@@ -1,12 +1,12 @@
-# jadon-resources-all-in-one
+# jadon-services-all-in-one
 
-In my work experience, I often make a contact with these services, which includes **MySQL**, **RabbitMQ**, **Redis**, **Elasticsearch**, **Cerebro**, **Kibana**, etc. This repository will be a super friendly for developers to build them quickly via docker-compose.
+In my work experience, I often make contact with these services, which include **MySQL**, **RabbitMQ**, **Redis**, **Elasticsearch**, **Cerebro**, **Kibana**, etc. This repository will be a super friendly for developers to build them quickly via docker-compose.
 
 ## Quick Start
 
-💡 Please install these tools `make`, `docker` and  `docker-compose` before going the following steps.
+💡 Please install these tools `make`, `docker`, and  `docker-compose` before going through the following steps.
 
-For the first time building those services, we need to execute this command to grant a folder access to elasticsearch.
+For the first time building those services, we need to execute this command to grant folder access to elasticsearch.
 `make grant-permission`
 
 ### Running
@@ -51,11 +51,11 @@ Please notice the elasticsearch [configuration](https://github.com/jaruan/jadon-
 
 #### Q&A
 
-Q: Why the elasticsearch expose two ports(9200 & 9300)?
+Q: Why does the elasticsearch expose two ports(9200 & 9300)?
 A: The Elasticsearch port 9300 is used for node-to-node communication within the Elasticsearch cluster. It is a custom binary protocol used for various cluster operations such as cluster updates, master elections, and shard allocation. This port is not intended for external client communication and is typically restricted to internal cluster usage.
 
 On the other hand, port 9200 is the default HTTP port for Elasticsearch. It is used for client communication and sending REST requests to the Elasticsearch cluster. This port allows clients to interact with Elasticsearch using various programming languages and tools
 
 ## Next step
 
-I will continue to upgrade the docker-compose.yml. Add more and more popular service configuration in it. Also, welcome developers giving me advices. I will really appreciate.
+I will continue to upgrade the docker-compose.yml. Add more and more popular service configurations to it. Also, I'd like to welcome developers giving me advice. I will appreciate it.
