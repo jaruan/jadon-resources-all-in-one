@@ -4,10 +4,10 @@ In my work experience, I often make contact with these services, which include *
 
 ## Quick Start
 
-💡 Please install these tools `make`, `docker`, and  `docker-compose` before going through the following steps.
+💡 Please install these tools `make`, `docker`, and `docker-compose` before going through the following steps.
 
 For the first time building those services, we need to execute this command to grant folder access to elasticsearch.
-`make grant-permission`
+`make grant`
 
 ### Running
 
@@ -19,20 +19,20 @@ For the first time building those services, we need to execute this command to g
 
 ### Services
 
-| Service Name        | Port   |  User / Password  |
-| --------   | -----:  | :----:  |
-| MySQL      | 3306   |   root / password     |
-| Redis        |   6379 |     |
-| RabbitMQ        |    5672    | 💡 I strongly recommend that you can set a new user by admin   |
-| Elasticsearch        |    9200    |    |
+| Service Name  | Port |                       User / Password                        |
+| ------------- | ---: | :----------------------------------------------------------: |
+| MySQL         | 3306 |                       root / password                        |
+| Redis         | 6379 |                                                              |
+| RabbitMQ      | 5672 | 💡 I strongly recommend that you can set a new user by admin |
+| Elasticsearch | 9200 |                                                              |
 
 ### Dashboard
 
-| Name | Host                    |
-| ------------- | ------------------------------ |
-| Cerebro      | <http://localhost:9100>       |
-| RabbitMQ Admin   | <http://localhost:15672>    |
-| Kibana   | <http://localhost:5601>   |
+| Name           | Host                     |
+| -------------- | ------------------------ |
+| Cerebro        | <http://localhost:9100>  |
+| RabbitMQ Admin | <http://localhost:15672> |
+| Kibana         | <http://localhost:5601>  |
 
 💡**Note**
 If your development environment is a VM, please check your VM's memory or increase the maximum memory.
