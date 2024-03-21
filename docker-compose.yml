@@ -16,7 +16,7 @@ services:
       - "3306:3306"
   jadon-postgres-db:
     container_name: jadon-postgres-db
-    image: postgres:13.2
+    image: postgres:16.2
     environment:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: password
